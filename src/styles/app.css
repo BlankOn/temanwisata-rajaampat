@@ -1,0 +1,132 @@
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/Montserrat-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "OpenSans";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/OpenSans.ttf") format("truetype");
+}
+
+.topcoat-list__item__line-height,
+.topcoat-list__item__line-height:last-child,
+.topcoat-list__item__line-height:first-child
+{
+	padding-left: 0px;
+	padding-right: 0px;
+  border: none!important;
+}
+
+.topcoat-navigation-bar,.topcoat-navigation-bar__title {
+  color: white;
+  font-family: "OpenSans";
+  font-weight: bold;
+  background: #333;
+  border: none!important;
+}
+
+.topcoat-list__item {
+  border: none;
+  background: #000;
+}
+
+.feature-list-item {
+  position: relative;
+  height: 150px;
+  width: auto;
+  overflow: hidden;
+}
+
+.feature-list-title-container {
+  position: absolute;
+  width: auto;
+  height: auto;
+  bottom: 10px;
+  left: 10px;
+  color: #fff;
+  z-index: 11;
+  font-family: "Montserrat";
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 1.5em;
+  text-align: left;
+}
+
+.feature-list-subtitle {
+  font-size: 0.8em;
+  font-weight: normal;
+  text-transform: none;
+}
+
+.feature-list-image {
+  opacity: 0.6;
+  position: absolute;
+  bottom: -30px;
+  left: 0px;
+  z-index: 10;
+}
+
+
+.rn-carousel-container{
+  width: 100%;
+	padding-left: 0px;
+	padding-right: 0px;
+  max-height: 300px;
+}
+
+.grid-padding{
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.left{
+	text-align: left;
+}
+
+.fasum{
+	text-align: left;
+	padding-bottom: 10px;
+}
+
+.label-data{
+	padding-bottom: 5px;
+}
+
+.isian-data{
+	padding-bottom: 5px;
+}
+
+.avatar {
+  width: 50%;
+  height: 50%;
+  margin-bottom: 30px;
+}
+
+.avatar img {
+  width: 100px;
+  height: auto;
+  border: 1px solid #efefef;
+  border-radius: 100px;
+}
+
+.textarea{
+	width: 100%;
+}
+
+.topcoat-navigation-bar__bg{
+  background: #333;
+  color: white;
+}
+
+.onsen_navigator-back-label {
+  display: none!important;
+}
+
+* {
+  font-family: "OpenSans";
+}
+

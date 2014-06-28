@@ -1,0 +1,51 @@
+<ons-navigator title="Profil Pengguna" ng-controller="AccountCtrl">
+	<ons-page>
+
+		<ons-row class="grid-padding center" ng-show="progressLoading">
+			<ons-col align="center">
+      <ons-icon icon="spinner" spin="true"></ons-icon>
+      <h5>Membuka profil</h5>
+			</ons-col>
+    </ons-row>
+	<ons-scroller class="center" ng-hide="progressLoading">
+		<br />
+		<ons-row class="grid-padding center">
+			<ons-col align="center">
+      <div class="avatar"><img ng-click="tryUnlockPosition()" ng-src="{{avatar}}" style="background-position:center top; width: 100px; height: 100px;"></div>
+			</ons-col>
+		</ons-row>
+		<ons-row class="grid-padding">
+			<ons-col align="center">
+      <h3>{{account.name}}</h3>
+			</ons-col>
+		</ons-row>
+		<br />
+		<h4 class="grid-padding left">Tentang Saya</h4>
+		<ons-row class="grid-padding center">
+			<ons-col align="left">
+    {{account.bio}}
+			</ons-col>
+		</ons-row>
+		<h4 class="grid-padding left">Motto</h4>
+		<ons-row class="grid-padding center">
+			<ons-col align="left">
+    {{account.quotes}}
+			</ons-col>
+		</ons-row>
+		<br />
+		<br />
+		<ons-row class="grid-padding center">
+			<ons-col align="center">
+				<ons-button ng-click="ons.navigator.pushPage('tentang.html')">Tentang Aplikasi</ons-button>
+			</ons-col>
+		</ons-row>
+		<br />
+<ons-row class="grid-padding center">
+			<ons-col align="center">
+				<ons-button ng-click="logout()">Logout</ons-button>
+			</ons-col>
+		</ons-row>
+
+
+	</ons-page>
+</ons-navigator>

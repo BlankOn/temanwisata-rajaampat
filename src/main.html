@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en" ng-app="TemanWisataApp">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>My App</title>  
+  
+  <link rel="stylesheet" href="css/onsenui.css">  
+  <link rel="stylesheet" href="css/topcoat-mobile-onsen-ios7.css">  
+  <link rel="stylesheet" href="css/angular-carousel.min.css"/>
+  <link rel="stylesheet" href="css/leaflet.css"/>
+  <link rel="stylesheet" href="css/app.css"/>
+
+  <script src="cordova.js"></script>    
+  <script src="libs.js"></script>    
+  <script src="src.js"></script> 
+</head>
+
+<body>    
+  <ons-screen>
+  <ons-navigator title="Login">
+  <ons-page class="center">	   
+
+  <div id=main style="padding: 10px" ng-controller="LoginCtrl" >
+    <img src="images/piknik.png">
+    <h4>Teman Wisata - Raja Ampat</h4>
+    <p ng-show="loginFailed">Tidak berhasil login ke Facebook. Silakan coba lagi.</p>
+    <ons-button ng-hide="loggingIn" ng-click="login();">
+      <ons-icon icon="facebook" size="15x"></ons-icon>&nbsp; 
+      <span ng-hide="loggingIn">Facebook</span>
+    </ons-button>
+    <div ng-show="loggingIn">
+      <ons-button >
+      <ons-icon icon="spinner" spin="true" size="15x"></ons-icon>&nbsp; 
+      <span ng-show="loggingIn">silakan tunggu</span>
+      </ons-button>
+    </div>
+
+    </ons-page>
+    </ons-navigator>
+
+  </ons-screen>
+ 
+</body>
+</html>

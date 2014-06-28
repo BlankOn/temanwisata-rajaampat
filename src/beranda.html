@@ -1,0 +1,19 @@
+<ons-navigator ng-controller="FeatureCtrl" title="Raja Ampat"
+        right-button-icon="fa fa-lg fa-refresh"
+            on-right-button-click="refresh()">
+    <ons-scroller class="center" >
+    <ons-list>
+    <ons-list-item ng-repeat="entry in list" class="topcoat-list__item__line-height">
+    <div class="feature-list-item" ng-click="ons.navigator.pushPage('detil.html', {id: entry.id, title: entry.properties.title})">
+      <div class="feature-list-title-container">
+      {{entry.properties.title}}
+      <span class="feature-list-subtitle"><br/><span class="fa fa-anchor"></span> {{entry.dist.calculated | number: 2}} Km</span>
+    </div>
+      <img class="feature-list-image" ng-src="{{entry.image}}" width="100%" >
+    </div>
+      </ons-list-item>
+    </ons-list>
+
+	</ons-scroller>
+
+  </ons-navigator>

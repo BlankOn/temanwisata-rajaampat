@@ -1,0 +1,41 @@
+<ons-scroller class="center" ng-controller="DetailCtrl">
+	<ons-navigator-toolbar
+  title="">
+	</ons-navigator-toolbar>
+	
+	<ul rn-carousel rn-carousel-indicator class="image">
+    <li ng-repeat="image in imageList"><img ng-src="{{image.url}}" width="100%"></li>
+	</ul>
+	
+  <h4>{{data.properties.subtitle}}</h4>
+	<ons-row class="grid-padding">
+        <p align="left">
+        <i style="float:left;margin-right:10px" class="fa fa-plane fa-3x"></i>
+        {{data.properties.note}}
+			</p>
+    </ons-row>
+    <h3 class="grid-padding left">DESKRIPSI</h3>
+    <ons-row class="grid-padding"> 
+        <ons-col><p align="left">
+        {{data.properties.description}}
+			</p>
+		</ons-col>
+    </ons-row>
+    <h3 class="grid-padding left">AKTIVITAS ALAM</h3>
+    <ons-row class="grid-padding"> 
+        <ons-col align="center"><img src="images/sunrise.png" width="64px"></ons-col>
+        <ons-col align="center"><h2>{{sunrise}}</h2></ons-col>
+    </ons-row>
+    <ons-row class="grid-padding"> 
+        <ons-col align="center"><img src="images/sunset.png" width="64px"></ons-col>
+        <ons-col align="center"><h2>{{sunset}}</h2></ons-col>
+    </ons-row>
+
+    <h3 class="grid-padding left">PETA WILAYAH</h3>
+    <ons-row class="grid-padding"> 
+    <ons-col align="center">
+        <leaflet markers="mapMarkers" center="mapCenter" width="100%" height="350px"></leaflet>
+        </ons-col>
+    </ons-row>
+   
+</ons-scroller>

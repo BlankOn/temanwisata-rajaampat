@@ -1,0 +1,42 @@
+{
+  "libs": [
+    "bower_components/angular/angular.min.js",
+    "bower_components/onsenui/build/js/onsenui.js",
+    "bower_components/angular-touch/angular-touch.min.js",
+    "bower_components/angular-carousel/dist/angular-carousel.min.js",
+    "bower_components/lodash/dist/lodash.min.js",
+    "lib/openfb.js",
+    "lib/geo.js",
+    "lib/PrayTimes.js",
+    "bower_components/leaflet-dist/leaflet.js",
+    "bower_components/angular-leaflet-directive/dist/angular-leaflet-directive.min.js",
+    "bower_components/nnnick-chartjs/Chart.min.js",
+    "bower_components/angles/angles.js",
+    "lib/pasut.js"
+  ],
+  "styles": [
+    "bower_components/onsenui/build/css/onsenui.css",
+    "bower_components/onsenui/build/css/topcoat-mobile-onsen-ios7.css",
+    "bower_components/leaflet-dist/leaflet.css",
+    "bower_components/angular-carousel/dist/angular-carousel.min.css",
+    "src/styles/app.css"
+  ],
+  "fa": [
+    "bower_components/onsenui/build/css/font_awesome/*/*"
+  ],
+  "src": [
+    "src/*/*.js"
+  ],
+  "images": [
+    "src/images/*"
+  ],
+  "fonts": [
+    "src/fonts/*"
+  ],
+  "icons": [
+    "res/**/*"
+  ],
+  "html": [
+    "src/*.html"
+  ]
+}

@@ -1,0 +1,214 @@
+<ons-screen>
+<ons-navigator title="Usulkan tempat" >
+	<ons-page>
+  <div ng-controller="SubmitCtrl">
+	<ons-scroller class="center">
+  <div ng-show="progressLoading">
+		<ons-row class="grid-padding center">
+			<ons-col align="center">
+      <ons-icon icon="spinner" spin="true"></ons-icon>
+      <h5>Mencari posisi sekarang</h5>
+			</ons-col>
+    </ons-row>
+  </div>
+
+  <div ng-show="progressSaving">
+		  <ons-button type="large" style="margin-top: 8px;">Silakan tunggu...</ons-button>
+  </div>
+    <form name="form" ng-submit="submitFeature()">
+  <div ng-hide="progressSaving">
+  <div ng-show="progressError">
+     <ons-row class="grid-padding"> 
+        <ons-col align="center">
+        </ons-col>
+    </ons-row>
+    <ons-row class="grid-padding"> 
+      <ons-col align="center">
+        <ons-icon size=5x icon="frown-o" spin="false"></ons-icon>
+      </ons-col>
+    </ons-row>
+     <ons-row class="grid-padding"> 
+        <ons-col align="center">
+        <h3>Mohon maaf</h3>
+        <p>Lokasi Anda tidak dapat ditentukan {{positionUnlocked}}</p>
+        <p ng-show="posError == 1">Ada setelan layanan posisi dengan GPS/jaringan yang tidak diaktifkan untuk aplikasi ini. Silakan cek di setelan Android.</p>
+        <p ng-show="posError == 2">Layanan posisi dengan GPS/jaringan tidak tersedia untuk aplikasi ini. Silakan cek di setelan Android.</p>
+        <p ng-show="posError == 3">Proses pencarian sudah terlalu lama.</p>
+        <p ng-show="posError == 100">Anda sedang berada di luar kawasan Raja Ampat.</p>
+        <p>Silakan coba lagi lain kali</p>
+        </ons-col>
+    </ons-row>
+  </div>
+  <div ng-hide="progressLoading || progressError">
+    <div ng-show="savingSuccess">
+	  <ons-row class="grid-padding"> 
+        <ons-col align="center">
+        Terima kasih telah mengusulkan tempat ini. Kiriman Anda akan disaring terlebih dahulu sebelum muncul di aplikasi Teman Wisata ini.
+        Anda dapat mengusulkan tempat lagi dengan mengisi formulir di bawah ini.
+        </ons-col>
+    </ons-row>
+  </div>
+
+    <div ng-show="savingError">
+	  <ons-row class="grid-padding"> 
+        <ons-col align="center">
+        Mohon maaf, kiriman Anda tidak berhasil diterima oleh Teman Wisata dengan baik. Silakan coba kembali.
+        </ons-col>
+    </ons-row>
+  </div>
+
+	  <h1>Usulkan Tempat</h1>
+	  <ons-row class="grid-padding"> 
+        <ons-col align="center">
+        </ons-col>
+    </ons-row>
+    <h3 class="grid-padding left">DATA TEMPAT</h3>
+    <p class="grid-padding left">Judul Lokasi</p>
+    <ons-row class="grid-padding">
+		  <ons-text-input required ng-model="data.properties.title" placeholder="Judul lokasi" style="display: block; padding-bottom: 7px; padding-top: -7px; width: 100%"></ons-text-input>
+	  </ons-row>
+	  <p class="grid-padding left">Sub Judul Lokasi</p>
+    <ons-row class="grid-padding">
+		  <ons-text-input required ng-model="data.properties.subtitle" placeholder="Sub judul lokasi" style="display: block; padding-bottom: 7px; padding-top: -7px; width: 100%"></ons-text-input>
+	  </ons-row>
+	  <p class="grid-padding left">Koordinat</p>
+	  <ons-row class="grid-padding">
+		  <ons-col align="center">
+			  <ons-text-input required disabled="true" ng-model="data.geometry.coordinates.1" placeholder="Latitude" style="display: block; padding-bottom: 7px; padding-top: -7px; width: 100%"></ons-text-input>
+		  </ons-col>
+		  <ons-col align="center">
+			  <ons-text-input required disabled="true" ng-model="data.geometry.coordinates.0" placeholder="Longitude" style="display: block; padding-bottom: 7px; padding-top: -7px; width: 100%"></ons-text-input>
+		  </ons-col>
+	  </ons-row>
+	  <p class="grid-padding left">Kategori</p>
+    <ons-row class="grid-padding">
+		  <ons-col align="left">
+			  <section style="padding: 10px;">      
+				  <ons-checkbox ng-model="data.properties.category" ng-true-value="purba">
+					  Purbakala
+				  </ons-checkbox> 
+			  </section>
+		  </ons-col>
+		  <ons-col align="left">
+			  <section style="padding: 10px;">      
+				  <ons-checkbox ng-model="data.properties.category" ng-true-value="kuliner">
+					  Kuliner dan Restoran
+				  </ons-checkbox> 
+			  </section>
+		  </ons-col>
+	  </ons-row>
+	  <ons-row class="grid-padding">
+		  <ons-col align="left">
+			  <section style="padding: 10px;">      
+				  <ons-checkbox ng-model="data.properties.category" ng-true-value="wisata">
+					  Objek Wisata Alam
+				  </ons-checkbox> 
+			  </section>
+		  </ons-col>
+		  <ons-col align="left">
+			  <section style="padding: 10px;">      
+				  <ons-checkbox ng-model="data.properties.category" ng-true-value="bandara">
+					  Bandara
+				  </ons-checkbox> 
+			  </section>
+		  </ons-col>
+	  </ons-row>
+	  <ons-row class="grid-padding">
+		  <ons-col align="left">
+			  <section style="padding: 10px;">      
+				  <ons-checkbox ng-model="data.properties.category" ng-true-value="perairan">
+					  Air dan Pantai
+				  </ons-checkbox> 
+			  </section>
+		  </ons-col>
+		  <ons-col align="left">
+			  <section style="padding: 10px;">      
+				  <ons-checkbox ng-model="data.properties.category" ng-true-value="terminal">
+					  Terminal
+				  </ons-checkbox> 
+			  </section>
+		  </ons-col>
+	  </ons-row>
+	  <ons-row class="grid-padding">
+		  <ons-col align="left">
+			  <section style="padding: 10px;">      
+				  <ons-checkbox ng-model="data.properties.category" ng-true-value="kontemporer">
+					  Kontemporer
+				  </ons-checkbox> 
+			  </section>
+		  </ons-col>
+		  <ons-col align="left">
+			  <section style="padding: 10px;">      
+				  <ons-checkbox ng-model="data.properties.category" ng-true-value="pelabuhan">
+					  Pelabuhan
+				  </ons-checkbox> 
+			  </section>
+		  </ons-col>
+	  </ons-row>
+	  <ons-row class="grid-padding">
+		  <ons-col align="left">
+			  <section style="padding: 10px;">      
+				  <ons-checkbox ng-model="data.properties.category" ng-true-value="kultural">
+					  Kultural
+				  </ons-checkbox> 
+			  </section>
+		  </ons-col>
+		  <ons-col align="left">
+			  <section style="padding: 10px;">      
+				  <ons-checkbox ng-model="data.properties.category" ng-true-value="belanja">
+					  Belanja
+				  </ons-checkbox> 
+			  </section>
+		  </ons-col>
+	  </ons-row>
+	  <ons-row class="grid-padding">
+		  <ons-col align="left">
+			  <section style="padding: 10px;">      
+				  <ons-checkbox ng-model="data.properties.category" ng-true-value="museum">
+					  Museum
+				  </ons-checkbox> 
+			  </section>
+		  </ons-col>
+		  <ons-col align="left">
+			  <section style="padding: 10px;">      
+				  <ons-checkbox ng-model="data.properties.category" ng-true-value="sekunder">
+				  	Sekunder
+				  </ons-checkbox> 
+			  </section>
+		  </ons-col>
+	  </ons-row>
+	  <p class="grid-padding left">Alamat</p>
+    <ons-row class="grid-padding">
+		  <div class="textarea">
+		    <ons-text-area required ng-model="data.properties.address" placeholder="Detil alamat" style="width: 100%; height: 100px;"></ons-text-area>
+		  </div>
+	  </ons-row>
+	  <p class="grid-padding left">Deskripsi</p>
+    <ons-row class="grid-padding">
+		  <div class="textarea">
+		    <ons-text-area required ng-model="data.properties.description" placeholder="Deskripsi tentang lokasi" style="width: 100%; height: 150px;"></ons-text-area>
+		  </div>
+	  </ons-row>
+	  <p class="grid-padding left">Informasi Tambahan</p>
+    <ons-row class="grid-padding">
+		  <div class="textarea">
+		    <ons-text-area required ng-model="data.properties.note" placeholder="Informasi tambahan" style="width: 100%; height: 100px;"></ons-text-area>
+		  </div>
+	  </ons-row>
+	  <p class="grid-padding left">Unggah Foto</p>
+    <ons-row class="grid-padding">
+		  <span ng-click="getPictures()" type="large" style="margin-top: 8px;" class="topcoat-button topcoat-button--large" >Unggah</span>
+	  </ons-row>
+    <ons-row class="grid-padding">
+    <img ng-show="{{captured}}" ng-src="{{captured}}" style="100%"><br/>
+	  </ons-row>
+	  <ons-row class="grid-padding">
+		  <ons-button ng-disabled="form.$invalid" type="large" style="margin-top: 8px;">Simpan</ons-button>
+	  </ons-row>
+	  <br />
+  </div>
+  </div>
+</form>
+</ons-scroller>
+	</ons-page>
+</ons-screen>
